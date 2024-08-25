@@ -5,6 +5,7 @@ import { ServerPosts } from "@/components/ServerPosts";
 import { BgGrid } from "@/components/svg/BG-Grid";
 import { Footer } from "@/components/Footer";
 import SideBarLayout from "@/components/Layout";
+import { HeroLogo } from "@/components/HeroLogo";
 
 export default async function Index() {
   const canInitSupabaseClient = () => {
@@ -44,8 +45,10 @@ export default async function Index() {
 
         <div className="mt-24 px-3 max-w-3xl">
           <main className="flex-1 flex flex-col gap-6">
+            <HeroLogo />
             <h2 className="font-bold text-4xl my-[70px] text-center">
-              Últimos chismes de la semana! ✨
+              ¡Este es un foro para compartir conocimientos sobre programación,
+              así como noticias y actualizaciones!
             </h2>
             {data && data.length > 0 ? (
               data &&

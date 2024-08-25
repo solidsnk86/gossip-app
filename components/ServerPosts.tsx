@@ -56,7 +56,7 @@ export const ServerPosts: React.FC<PostsProps> = ({
               href={url}
               target="_blank"
               title={`Ir a ${url}`}
-              className="w-fit hover:bg-zinc-800 rounded-md px-2 py-1 select-none cursor-pointer"
+              className="w-fit bg-btn-background hover:bg-btn-background-hover rounded-md px-2 py-1 select-none cursor-pointer"
             >
               Link
             </Link>

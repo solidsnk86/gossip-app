@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GossipFormClient } from "@/components/GossipForm";
 import { Posts } from "@/components/Posts";
 import { supabase } from "@/utils/supabase/client";
@@ -10,13 +10,12 @@ import { PostsLength } from "./PostsLength";
 export default function ProtectedPageClient({
   user,
   initialData,
-  dataLocation,
 }: {
   user: any;
   initialData: any;
-  dataLocation: any;
 }) {
   const [data, setData] = useState(initialData);
+  const [dataLocation, setDataLocation] = useState<any>([]);
   const [editablePostId, setEditablePostId] = useState<string | number | null>(
     null
   );
@@ -65,6 +64,27 @@ export default function ProtectedPageClient({
       setEditablePostId(null);
     }
   };
+
+  useEffect(() => {
+    async function GetLocation() {
+      try {
+        const api = {
+          url: "https://geolocation.microlink.io",
+        };
+        const res = await fetch(api.url);
+        const dataLocation = await res.json();
+
+        if (!res.ok) {
+          console.error("Failed to get data", res.statusText);
+        }
+
+        setDataLocation(dataLocation);
+      } catch (err) {
+        console.error("API limit", err);
+      }
+    }
+    GetLocation();
+  }, []);
 
   return (
     <div className="w-full gap-20 items-center">

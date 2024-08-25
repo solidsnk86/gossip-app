@@ -3,10 +3,8 @@ import AuthButton from "@/components/AuthButton";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { Footer } from "@/components/Footer";
-import GetLocation from "@/components/GetLocation";
 import ProtectedPageClient from "@/components/ProtectedPageClient";
 import SideBarLayout from "@/components/Layout";
-import { PostsLength } from "@/components/PostsLength";
 
 export default async function ProtectedPage() {
   const supabase = createClient();
@@ -33,7 +31,6 @@ export default async function ProtectedPage() {
   };
 
   const data = await loadData();
-  const dataLocation = await GetLocation();
 
   return (
     <SideBarLayout userProfile={user.user_metadata.user_name}>
@@ -45,11 +42,7 @@ export default async function ProtectedPage() {
           </div>
         </nav>
 
-        <ProtectedPageClient
-          user={user}
-          initialData={data}
-          dataLocation={dataLocation}
-        />
+        <ProtectedPageClient user={user} initialData={data} />
 
         <Footer />
       </div>
