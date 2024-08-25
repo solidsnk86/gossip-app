@@ -20,23 +20,21 @@ export function AuthButtonClient({
 
   return (
     <div className="relative flex items-center gap-4">
-      <Tooltip title={`Ir al perfil de ${user.user_metadata.user_name}`}>
-        <button
-          onClick={toggleMenu}
-          className="flex items-center gap-2 focus:outline-none"
-        >
-          <img
-            className="rounded-full border border-zinc-500"
-            src={user.user_metadata.avatar_url}
-            width={33}
-            height={33}
-            alt="User Avatar"
-          />
-          <span className="hidden md:block">
-            Hey, {user.user_metadata.user_name}!
-          </span>
-        </button>
-      </Tooltip>
+      <button
+        onClick={toggleMenu}
+        className="flex items-center gap-2 focus:outline-none"
+      >
+        <img
+          className="rounded-full border border-zinc-500"
+          src={user.user_metadata.avatar_url}
+          width={33}
+          height={33}
+          alt="User Avatar"
+        />
+        <span className="hidden md:block">
+          Hey, {user.user_metadata.user_name}!
+        </span>
+      </button>
 
       <div className="md:hidden">
         {isMenuOpen && (
