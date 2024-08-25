@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -23,6 +23,17 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/auth/callback/route.js",
+    "app/account/account-form.jsx",
+    "app/notes/page.js",
+    "components/svg/BG-Grid.js",
+    "components/svg/BG-Grid.js",
+    "components/svg/BG-Grid.js"
+  ],
   "exclude": ["node_modules"]
 }
