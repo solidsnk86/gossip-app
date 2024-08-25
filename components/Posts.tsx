@@ -44,9 +44,9 @@ export const Posts: React.FC<PostsProps> = ({
     <article
       key={id}
       id={`gossip-${id}`}
-      className="flex flex-col space-y-2 bg-zinc-800/60 border border-zinc-800 rounded-2xl relative"
+      className="flex flex-col space-y-2 bg-btn-background border dark:border-zinc-800 rounded-2xl relative"
     >
-      <header className="flex gap-[10px] items-center border-b border-zinc-800 p-4">
+      <header className="flex gap-[10px] items-center border-b dark:border-zinc-800 p-4">
         <img
           src={avatar_url}
           width={38}
