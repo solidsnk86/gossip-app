@@ -43,10 +43,10 @@ export default async function Index() {
           </div>
         </nav>
 
-        <div className="mt-24 px-3 max-w-3xl">
+        <div className="mt-24 px-4 max-w-3xl">
           <main className="flex-1 flex flex-col gap-6">
             <HeroLogo />
-            <h2 className="font-bold text-4xl my-[70px] text-center">
+            <h2 className="font-bold xl:text-4xl text-xl my-[70px] text-center">
               ¡Este es un foro para compartir conocimientos sobre programación,
               así como noticias y actualizaciones!
             </h2>
@@ -65,7 +65,7 @@ export default async function Index() {
                 />
               ))
             ) : (
-              <div className="text-center">
+              <div className="text-center my-10">
                 <h4 className="text-lg font-semibold">
                   Nada de chismes por aquí...🥱
                 </h4>
@@ -74,6 +74,14 @@ export default async function Index() {
                 </h4>
               </div>
             )}
+            <div className="border border-foreground/10 bg-[#8bf98b]/30 dark:bg-violet-500/50 h-60 rounded-lg mx-auto my-10 flex items-center justify-center p-6 text-center relative overflow-hidden">
+              <p>
+                Esta aplicación está en desarrollo, por lo cual puede contener
+                bugs 🐞, también hay funciones que se están agregando y están
+                bloqueadas así que paciencia!
+              </p>
+              <BgGrid className="absolute top-0" />
+            </div>
           </main>
         </div>
 
