@@ -140,7 +140,7 @@ export const GossipFormClient = ({
         <div className="flex justify-end my-2">
           <button
             type="submit"
-            className="px-2 py-1 bg-zinc-800 rounded-lg border border-foreground/10 w-fit hover:brightness-125 cursor-pointer"
+            className="px-2 py-1 bg-btn-background hover:bg-btn-background-hover rounded-lg border border-foreground/10 w-fit cursor-pointer"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Enviando..." : "Enviar"}
