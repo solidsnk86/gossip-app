@@ -62,8 +62,8 @@ export default async function Index() {
                 />
               ))
             ) : (
-              <div>
-                <h4 className="text-lg font-semibold text-center">
+              <div className="text-center">
+                <h4 className="text-lg font-semibold">
                   Nada de chismes por aquí...🥱
                 </h4>
                 <p>!Inicia sesión para comentar algo!</p>
