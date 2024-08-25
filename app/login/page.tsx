@@ -14,7 +14,7 @@ export default function Login({
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: `https://${process.env.VERCEL_URL}`,
+        redirectTo: `https://gossip-app.vercel.app/auth/callback`,
       },
     });
 
@@ -45,7 +45,7 @@ export default function Login({
         >
           <polyline points="15 18 9 12 15 6" />
         </svg>{" "}
-        Volver
+        Back
       </Link>
       <form
         action={signInWithGitHub}
