@@ -20,10 +20,7 @@ export function AuthButtonClient({
 
   return (
     <div className="relative flex items-center gap-4">
-      <Tooltip
-        title={`Ir al perfil de ${user.user_metadata.user_name}`}
-        className=" hidden lg:block"
-      >
+      <Tooltip title={`Ir al perfil de ${user.user_metadata.user_name}`}>
         <button
           onClick={toggleMenu}
           className="flex items-center gap-2 focus:outline-none"

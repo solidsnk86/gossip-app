@@ -5,7 +5,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { supabase } from "@/utils/supabase/client";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const formSchema = z.object({
   title: z.string().min(5, { message: "El campo título es requerido" }).trim(),
@@ -80,6 +80,17 @@ export const GossipFormClient = ({
     setWordCount(text.split(" ").length);
   };
 
+  useEffect(() => {
+    const resize = () => {
+      const textarea = document.getElementById("textarea");
+      textarea?.addEventListener("input", () => {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+      });
+    };
+    resize();
+  }, []);
+
   return (
     <form
       onSubmit={handleSubmit(handleFormSubmit)}
@@ -92,7 +103,7 @@ export const GossipFormClient = ({
         <input
           type="text"
           placeholder="Título"
-          className="w-full p-2 bg-transparent rounded-lg"
+          className="w-full p-2 bg-transparent border-b"
           {...register("title")}
         />
         {errors.title && (
@@ -101,13 +112,13 @@ export const GossipFormClient = ({
 
         <textarea
           id="textarea"
-          className="w-full p-2 bg-transparent rounded-lg resize-none"
+          className="w-full p-2 bg-transparent resize-none border-b"
           placeholder="Contáte algo che..."
           {...register("message")}
           onInput={handleInput}
           maxLength={MAX_CHARS}
         ></textarea>
-        <div className="text-xs mt-2 space-x-2 text-zinc-400">
+        <div className="text-xs ml-[6px] mt-2 space-x-2 text-zinc-400">
           {charCount < 10 ? (
             <>
               <span>
@@ -130,7 +141,7 @@ export const GossipFormClient = ({
         <input
           type="text"
           placeholder="¿URL del artículo?"
-          className="w-full p-2 bg-transparent rounded-lg"
+          className="w-full p-2 bg-transparent border-b my-4"
           {...register("url")}
         />
         {errors.url && (

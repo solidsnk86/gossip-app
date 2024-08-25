@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GossipFormClient } from "@/components/GossipForm";
 import { Posts } from "@/components/Posts";
 import { supabase } from "@/utils/supabase/client";
@@ -15,10 +15,32 @@ export default function ProtectedPageClient({
   initialData: any;
 }) {
   const [data, setData] = useState(initialData);
-  const [dataLocation, setDataLocation] = useState<any>([]);
+  const [dataLocation, setDataLocation] = useState<any>(null);
   const [editablePostId, setEditablePostId] = useState<string | number | null>(
     null
   );
+
+  useEffect(() => {
+    const getLocation = async () => {
+      try {
+        const api = {
+          url: "https://geolocation.microlink.io",
+        };
+        const res = await fetch(api.url);
+        const data = await res.json();
+
+        if (!res.ok) {
+          console.error("Failed to get data", res.statusText);
+        }
+
+        setDataLocation(data);
+      } catch (err) {
+        console.error("API limit", err);
+      }
+    };
+
+    getLocation();
+  }, []);
 
   const handleRefresh = async () => {
     const { data: refreshedData, error } = await supabase
@@ -65,42 +87,25 @@ export default function ProtectedPageClient({
     }
   };
 
-  useEffect(() => {
-    async function GetLocation() {
-      try {
-        const api = {
-          url: "https://geolocation.microlink.io",
-        };
-        const res = await fetch(api.url);
-        const dataLocation = await res.json();
-
-        if (!res.ok) {
-          console.error("Failed to get data", res.statusText);
-        }
-
-        setDataLocation(dataLocation);
-      } catch (err) {
-        console.error("API limit", err);
-      }
-    }
-    GetLocation();
-  }, []);
-
   return (
     <div className="w-full gap-20 items-center">
       <div className="mt-16">
-        <ProfileHeader
-          avatar={user.user_metadata.avatar_url}
-          fullName={user.user_metadata.full_name}
-          user={user.user_metadata.user_name}
-          city={dataLocation.city.name}
-          country={dataLocation.country.name}
-          createdAt={user.created_at}
-        />
+        {dataLocation ? (
+          <ProfileHeader
+            avatar={user.user_metadata.avatar_url}
+            fullName={user.user_metadata.full_name}
+            user={user.user_metadata.user_name}
+            city={dataLocation.city.name}
+            country={dataLocation.country.name}
+            createdAt={user.created_at}
+          />
+        ) : (
+          <p>Loading location...</p>
+        )}
         <GossipFormClient
-          ip={dataLocation.ip.address}
-          city={dataLocation.city.name}
-          country={dataLocation.country.name}
+          ip={dataLocation?.ip?.address || ""}
+          city={dataLocation?.city?.name || ""}
+          country={dataLocation?.country?.name || ""}
           fullName={user.user_metadata.full_name}
           userName={user.user_metadata.user_name}
           avatar={user.user_metadata.avatar_url}
