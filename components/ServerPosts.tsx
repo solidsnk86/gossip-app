@@ -27,9 +27,9 @@ export const ServerPosts: React.FC<PostsProps> = ({
   return (
     <article
       key={id}
-      className="flex flex-col space-y-2 bg-zinc-800/60 border border-zinc-800 rounded-2xl relative home-posts"
+      className="flex flex-col space-y-2 bg-btn-background border dark:border-zinc-800 rounded-2xl relative home-posts"
     >
-      <header className="flex gap-[10px] items-center border-b border-zinc-800 p-4">
+      <header className="flex gap-[10px] items-center border-b dark:border-zinc-800 p-4">
         <img
           src={avatar_url}
           width={38}
@@ -39,7 +39,7 @@ export const ServerPosts: React.FC<PostsProps> = ({
         />
         <aside className="flex flex-col cursor-default">
           <small className="font-semibold">{user_metadata}</small>
-          <small className="text-zinc-400 font-light">
+          <small className=" text-foreground font-light">
             {city} •{" "}
             <Tooltip title={Format.dateAndTime(created_at)}>
               <span className="hover:underline">{Format.date(created_at)}</span>
@@ -49,7 +49,7 @@ export const ServerPosts: React.FC<PostsProps> = ({
       </header>
       <section className="space-y-2 p-4">
         <h4>{title}</h4>
-        <p className="text-pretty text-zinc-400">{message}</p>
+        <p className="text-pretty text-foreground">{message}</p>
         {url ? (
           <div className="flex items-center justify-end">
             <Link

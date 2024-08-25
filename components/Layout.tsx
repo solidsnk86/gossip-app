@@ -11,9 +11,9 @@ export default function SideBarLayout({
 }) {
   return (
     <>
-      <aside className="hidden lg:block lg:w-[260px] xl:w-[300px] sticky top-16 h-screen border-r border-foreground/10 p-6">
+      <aside className="hidden lg:block lg:w-[260px] xl:w-[300px] sticky top-20 h-screen border-r border-foreground/10 p-6">
         <ul className="space-y-4 p-0 m-0 list-none">
-          <li className="flex items-center hover:bg-zinc-800 rounded-lg">
+          <li className="flex items-center hover:bg-btn-background-hover dark:hover:bg-zinc-800 rounded-lg">
             <Link
               href="/"
               className="text-xl font-medium text-foreground flex items-center w-full p-2"
@@ -22,7 +22,7 @@ export default function SideBarLayout({
               Inicio
             </Link>
           </li>
-          <li className="flex items-center hover:bg-zinc-800 rounded-lg">
+          <li className="flex items-center hover:bg-btn-background-hover dark:hover:bg-zinc-800 rounded-lg">
             <Link
               href="#"
               className="text-xl font-medium text-foreground flex items-center w-full p-2 cursor-not-allowed"
@@ -32,7 +32,7 @@ export default function SideBarLayout({
               Notificaciones
             </Link>
           </li>
-          <li className="flex items-center hover:bg-zinc-800 rounded-lg">
+          <li className="flex items-center hover:bg-btn-background-hover dark:hover:bg-zinc-800 rounded-lg">
             <Link
               href="#"
               className="text-xl font-medium text-foreground flex items-center w-full p-2 cursor-not-allowed"
@@ -42,7 +42,7 @@ export default function SideBarLayout({
               Mensajes
             </Link>
           </li>
-          <li className="flex items-center hover:bg-zinc-800 rounded-lg">
+          <li className="flex items-center hover:bg-btn-background-hover dark:hover:bg-zinc-800 rounded-lg">
             {userProfile !== null ? (
               <Link
                 href={`/${userProfile}`}

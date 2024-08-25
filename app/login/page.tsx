@@ -58,7 +58,7 @@ export default function Login({
           Inicia sesión con Github
         </small>
         <button
-          className="bg-btn-background text-white rounded-md py-1 px-4 text-foreground mb-2 flex items-center justify-center border border-zinc-800 hover:brightness-125"
+          className="bg-btn-background rounded-md py-1 px-4 text-foreground mb-2 flex items-center justify-center border dark:border-zinc-800 hover:to-btn-background-hoverb"
           type="submit"
         >
           <svg viewBox="0 0 24 24" width="24" height="24" className="mr-2">

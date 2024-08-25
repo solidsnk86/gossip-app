@@ -72,10 +72,6 @@ export default async function Index() {
           </main>
         </div>
 
-        <div className="border border-foreground/10 rounded-3xl overflow-hidden bg-indigo-400/20">
-          <BgGrid className="w-full h-auto" />
-        </div>
-
         <Footer />
       </div>
     </SideBarLayout>
