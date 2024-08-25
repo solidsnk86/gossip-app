@@ -47,7 +47,8 @@ export default async function Index() {
             <h2 className="font-bold text-4xl my-[70px] text-center">
               Últimos chismes de la semana! ✨
             </h2>
-            {data &&
+            {data && data.length > 0 ? (
+              data &&
               data.map((d) => (
                 <ServerPosts
                   id={d.id}
@@ -59,7 +60,10 @@ export default async function Index() {
                   url={d.url}
                   created_at={d.created_at}
                 />
-              ))}
+              ))
+            ) : (
+              <h4>Nada de chismes por aquí...🥱</h4>
+            )}
           </main>
         </div>
 
