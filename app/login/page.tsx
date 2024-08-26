@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
+import { ShapeSVG } from "@/components/svg/ShapeSVG";
 
 export default function Login({
   searchParams,
@@ -29,7 +30,7 @@ export default function Login({
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center mx-auto gap-2">
       <Link
         href="/"
-        className="absolute left-8 top-8 py-2 px-4 rounded-md no-underline text-foreground bg-btn-background hover:bg-btn-background-hover flex items-center group text-sm"
+        className="absolute left-4 top-4 xl:left-8 xl:top-8 py-2 px-4 rounded-md no-underline text-foreground bg-btn-background hover:bg-btn-background-hover flex items-center group text-sm"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -47,18 +48,17 @@ export default function Login({
         </svg>{" "}
         Volver
       </Link>
+
       <form
         action={signInWithGitHub}
-        className="grid container mx-auto w-full justify-center gap-2 text-foreground p-4"
+        className="grid container dark:bg-zinc-800/60 bg-zinc-200/60 mx-auto w-full justify-center gap-2 text-foreground p-12 relative border border-foreground/10 rounded-xl overflow-hidden"
       >
+        <ShapeSVG className="absolute top-0 left-0 -z-10" />
         <h3 className="text-center font-semibold text-3xl pb-2">
           Inciar sesión
         </h3>
-        <small className="text-center text-balance py-3">
-          Inicia sesión con Github
-        </small>
         <button
-          className="bg-btn-background rounded-md py-1 px-4 text-foreground mb-2 flex items-center justify-center border dark:border-zinc-800 hover:to-btn-background-hoverb"
+          className="bg-btn-background rounded-md py-1 px-4 text-foreground mb-2 flex items-center justify-center hover:bg-btn-background-hover transition-all duration-300"
           type="submit"
         >
           <svg viewBox="0 0 24 24" width="24" height="24" className="mr-2">
