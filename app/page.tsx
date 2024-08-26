@@ -74,7 +74,7 @@ export default async function Index() {
                 </h4>
               </div>
             )}
-            <div className="border border-foreground/10 bg-[#8bf98b]/30 dark:bg-violet-500/50 h-60 rounded-lg mx-auto my-10 flex items-center justify-center p-6 text-center relative overflow-hidden">
+            <div className="border border-foreground/10 dark:bg-zinc-800/50 bg-zinc-200/50 h-60 rounded-lg mx-auto my-10 flex items-center justify-center p-6 text-center relative overflow-hidden">
               <p>
                 Esta aplicación está en desarrollo, por lo cual puede contener
                 bugs 🐞, también hay funciones que se están agregando y están
