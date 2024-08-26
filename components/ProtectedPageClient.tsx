@@ -6,6 +6,7 @@ import { Posts } from "@/components/Posts";
 import { supabase } from "@/utils/supabase/client";
 import { ProfileHeader } from "./ProfileHeader";
 import { PostsLength } from "./PostsLength";
+import { PreLoader } from "./PreLoader";
 
 export default function ProtectedPageClient({
   user,
@@ -100,7 +101,7 @@ export default function ProtectedPageClient({
             createdAt={user.created_at}
           />
         ) : (
-          <p>Loading location...</p>
+          <PreLoader />
         )}
         <GossipFormClient
           ip={dataLocation?.ip?.address || ""}

@@ -45,7 +45,7 @@ export default function Login({
         >
           <polyline points="15 18 9 12 15 6" />
         </svg>{" "}
-        Back
+        Volver
       </Link>
       <form
         action={signInWithGitHub}

@@ -5,7 +5,7 @@ export const HeroLogo = () => {
         Chisme
       </span>
       A
-      <span className="inline-flex xl:-translate-x-[18px] -translate-x-[6px] align-middle">
+      <span className="inline-flex xl:-translate-x-[18px] -translate-x-[6px] align-middle eyes">
         👀
       </span>
     </h1>

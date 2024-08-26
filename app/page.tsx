@@ -48,7 +48,7 @@ export default async function Index() {
             <HeroLogo />
             <h2 className="font-bold xl:text-4xl text-xl my-[70px] text-center">
               ¡Este es un foro para compartir conocimientos sobre programación,
-              así como noticias y actualizaciones!
+              así como noticias y actualizaciones! Buee también chismes...
             </h2>
             {data && data.length > 0 ? (
               data &&
