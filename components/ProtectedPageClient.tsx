@@ -15,7 +15,7 @@ export default function ProtectedPageClient({
   initialData: any;
 }) {
   const [data, setData] = useState(initialData);
-  const [dataLocation, setDataLocation] = useState<any>([]);
+  const [dataLocation, setDataLocation] = useState<any>(null);
   const [editablePostId, setEditablePostId] = useState<string | number | null>(
     null
   );
@@ -41,14 +41,7 @@ export default function ProtectedPageClient({
           console.error(`Failed to get data: ${res.status} ${res.statusText}`);
         }
 
-        const dataSchema = {
-          city: data.city.name,
-          country: data.country.name,
-        };
-
-        localStorage.setItem("location", JSON.stringify(dataSchema));
-        const savedData = localStorage.getItem("location");
-        setDataLocation(JSON.parse(savedData as string));
+        setDataLocation(data);
       } catch (err) {
         console.error("API limit", err);
       }
@@ -105,14 +98,14 @@ export default function ProtectedPageClient({
           avatar={user.user_metadata.avatar_url}
           fullName={user.user_metadata.full_name}
           user={user.user_metadata.user_name}
-          city={dataLocation.city}
-          country={dataLocation.country}
+          city={dataLocation?.city?.name}
+          country={dataLocation?.country?.name}
           createdAt={user.created_at}
         />
         <GossipFormClient
-          ip={dataLocation?.ip?.address || ""}
-          city={dataLocation?.city?.name || ""}
-          country={dataLocation?.country?.name || ""}
+          ip={dataLocation?.ip?.address}
+          city={dataLocation?.city?.name}
+          country={dataLocation?.country?.name}
           fullName={user.user_metadata.full_name}
           userName={user.user_metadata.user_name}
           avatar={user.user_metadata.avatar_url}

@@ -33,7 +33,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           <img
             src={avatar}
             width={130}
-            height={130}
+            height={160}
             className="rounded-full border-4 border-background"
             alt="Avatar"
           />
