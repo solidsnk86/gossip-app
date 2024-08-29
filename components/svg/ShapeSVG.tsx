@@ -1,7 +1,7 @@
 export const ShapeSVG = (props: any) => {
   const { ...attrs } = props;
   return (
-    <svg width="400" height="300" viewBox="0 0 400 300" fill="none" {...attrs}>
+    <svg width="500" height="400" viewBox="0 0 400 300" fill="none" {...attrs}>
       <mask
         id="mask0_1_2"
         maskUnits="userSpaceOnUse"

@@ -53,12 +53,11 @@ export default function Login({
         action={signInWithGitHub}
         className="grid container dark:bg-zinc-800/60 bg-zinc-200/60 mx-auto w-full justify-center gap-2 text-foreground p-12 relative border border-foreground/10 rounded-xl overflow-hidden"
       >
-        <ShapeSVG className="absolute top-0 left-0 -z-10" />
         <h3 className="text-center font-semibold text-3xl pb-2">
           Inciar sesión
         </h3>
         <button
-          className="bg-btn-background rounded-md py-1 px-4 text-foreground mb-2 flex items-center justify-center hover:bg-btn-background-hover transition-all duration-300"
+          className="bg-btn-background rounded-md py-1 px-4 text-foreground mb-2 flex items-center justify-center hover:bg-btn-background-hover transition-all duration-300 outline-1 outline-offset-2 dark:outline-zinc-700 outline-zinc-400 outline border border-foreground/20"
           type="submit"
         >
           <svg viewBox="0 0 24 24" width="24" height="24" className="mr-2">
@@ -69,10 +68,14 @@ export default function Login({
           </svg>
           Ingresa con GitHub
         </button>
+        <small className="text-center text-[10px] text-foreground dark:text-zinc-400 mt-2">
+          Al continuar, acepta los Términos de servicio y la Política de
+          privacidad de ChismeApp.
+        </small>
         {searchParams?.message && (
-          <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
+          <small className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
             {searchParams.message}
-          </p>
+          </small>
         )}
       </form>
     </div>
