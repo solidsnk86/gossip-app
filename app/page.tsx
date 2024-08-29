@@ -50,7 +50,7 @@ export default async function Index() {
               ¡Este es un foro para compartir conocimientos sobre programación,
               así como noticias y actualizaciones! Buee también chismes...
             </h2>
-            {isSupabaseConnected !== true ? (
+            {user ? (
               data && data.length > 0 ? (
                 data &&
                 data.map((d) => (
