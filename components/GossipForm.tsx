@@ -1,10 +1,10 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { boolean, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { supabase } from "@/utils/supabase/client";
-import React from "react";
+import React, { SetStateAction } from "react";
 import { useState, useEffect } from "react";
 
 const formSchema = z.object({
@@ -71,6 +71,7 @@ export const GossipFormClient = ({
 
   const [charCount, setCharCount] = useState(MAX_CHARS);
   const [wordCount, setWordCount] = useState(0);
+  const [resize, setResize] = useState<any>(null);
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
@@ -81,10 +82,13 @@ export const GossipFormClient = ({
   useEffect(() => {
     const resize = () => {
       const textarea = document.getElementById("textarea");
-      textarea?.addEventListener("input", () => {
-        textarea.style.height = "auto";
-        textarea.style.height = textarea.scrollHeight + "px";
-      });
+      if (textarea) {
+        textarea.addEventListener("input", () => {
+          textarea.style.height = "auto";
+          textarea.style.height = textarea.scrollHeight + "px";
+        });
+      }
+      setResize(textarea);
     };
     resize();
   }, []);
@@ -104,6 +108,7 @@ export const GossipFormClient = ({
           placeholder="Contáte algo che..."
           {...register("message")}
           onInput={handleInput}
+          onChange={() => resize}
           maxLength={MAX_CHARS}
         ></textarea>
         <div className="text-xs ml-[6px] mt-2 space-x-2 text-zinc-400">

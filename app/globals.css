@@ -63,6 +63,14 @@ dialog {
   scale: 0;
 }
 
+#textarea::-webkit-scrollbar {
+  display: none;
+}
+
+#textarea:focus {
+  outline: none;
+}
+
 .loader-background {
   position: fixed;
   top: 0;
@@ -79,12 +87,10 @@ dialog {
   left: calc(50% - 25px);
   width: 45px;
   height: 45px;
-  border-top: 5px solid indigo;
-  border-right: 5px solid indigo;
-  border-bottom: 5px solid indigo;
-  border-left: 5px solid indigo;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid transparent;
   border-radius: 50%;
-  filter: drop-shadow(0 0 20px indigo) blur(1px);
 }
 
 .loader::before {
