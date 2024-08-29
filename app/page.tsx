@@ -50,30 +50,32 @@ export default async function Index() {
               ¡Este es un foro para compartir conocimientos sobre programación,
               así como noticias y actualizaciones! Buee también chismes...
             </h2>
-            {data && data.length > 0 ? (
-              data &&
-              data.map((d) => (
-                <ServerPosts
-                  id={d.id}
-                  avatar_url={d.avatar_url}
-                  user_metadata={d.full_name}
-                  city={d.city}
-                  title={d.title}
-                  message={d.message}
-                  url={d.url}
-                  created_at={d.created_at}
-                />
-              ))
-            ) : (
-              <div className="text-center my-10">
-                <h4 className="text-lg font-semibold">
-                  Nada de chismes por aquí...🥱
-                </h4>
-                <h4 className="text-lg font-semibold">
-                  Inicia sesión para comentar algo!
-                </h4>
-              </div>
-            )}
+            {isSupabaseConnected !== true ? (
+              data && data.length > 0 ? (
+                data &&
+                data.map((d) => (
+                  <ServerPosts
+                    id={d.id}
+                    avatar_url={d.avatar_url}
+                    user_metadata={d.full_name}
+                    city={d.city}
+                    title={d.title}
+                    message={d.message}
+                    url={d.url}
+                    created_at={d.created_at}
+                  />
+                ))
+              ) : (
+                <div className="text-center my-10">
+                  <h4 className="text-lg font-semibold">
+                    Nada de chismes por aquí...🥱
+                  </h4>
+                  <h4 className="text-lg font-semibold">
+                    Inicia sesión para comentar algo!
+                  </h4>
+                </div>
+              )
+            ) : null}
             <div className="border border-foreground/10 dark:bg-zinc-800/50 bg-zinc-200/50 h-60 rounded-lg mx-auto my-10 flex items-center justify-center p-6 text-center relative overflow-hidden">
               <p>
                 Esta aplicación está en desarrollo, por lo cual puede contener
