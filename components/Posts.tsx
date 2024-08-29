@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Format } from "./actions/FormatClass";
 import { DeleteButton } from "@/components/actions/DeleteButton";
 import { EditButton } from "./actions/EditButton";
+import { ShareButton } from "./actions/ShareButton";
 
 type PostsProps = {
   id: string | number;
@@ -72,16 +73,19 @@ export const Posts: React.FC<PostsProps> = ({
         >
           {message}
         </p>
-        {url ? (
-          <Link
-            href={url}
-            title={`Ir a ${url}`}
-            target="_blank"
-            className="float-right w-fit hover:bg-zinc-800 rounded-md px-2 py-1 select-none cursor-pointer"
-          >
-            Link
-          </Link>
-        ) : null}
+        <div className="flex items-center justify-between">
+          <ShareButton message={message as string} url={url} />
+          {url ? (
+            <Link
+              href={url}
+              target="_blank"
+              title={`Ir a ${url}`}
+              className="w-fit bg-btn-background hover:bg-btn-background-hover rounded-md px-2 py-1 select-none cursor-pointer"
+            >
+              Link
+            </Link>
+          ) : null}
+        </div>
         {editable && (
           <button
             onClick={() => {
