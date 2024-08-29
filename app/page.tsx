@@ -82,7 +82,7 @@ export default async function Index() {
                 </div>
               )
             ) : null}
-            <div className="border border-foreground/10 dark:bg-zinc-800/50 bg-zinc-200/50 h-60 rounded-lg mx-auto my-10 flex items-center justify-center p-6 text-center relative overflow-hidden">
+            <div className="card-outline border border-foreground/10 dark:bg-zinc-800/50 bg-zinc-200/50 h-60 rounded-xl mx-auto my-10 flex items-center justify-center p-6 text-center relative overflow-hidden">
               <p>
                 Esta aplicación está en desarrollo, por lo cual puede contener
                 bugs 🐞, también hay funciones que se están agregando y están

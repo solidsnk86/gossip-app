@@ -138,6 +138,24 @@ dialog {
   }
 }
 
+.card-outline {
+  position: relative;
+}
+
+.card-outline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+  pointer-events: none;
+}
+
 @layer base {
   * {
     @apply border-foreground/20;
