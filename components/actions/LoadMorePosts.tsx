@@ -7,6 +7,7 @@ import { HomePosts } from "../HomePosts";
 export default function LoadMorePosts({ initialPosts }: { initialPosts: any }) {
   const [posts, setPosts] = useState<any>(initialPosts || []);
   const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
 
   const loadMore = async () => {
     setLoading(true);
@@ -14,12 +15,14 @@ export default function LoadMorePosts({ initialPosts }: { initialPosts: any }) {
       .from("gossip")
       .select("*")
       .order("created_at", { ascending: false })
-      .limit(10)
       .range(posts.length, posts.length + 9);
 
     if (error) {
       console.error("Cannot load more posts", error.message);
     } else {
+      if (data.length < 10) {
+        setHasMore(false);
+      }
       setPosts((prevPosts: []) => [...prevPosts, ...data]);
     }
     setLoading(false);
@@ -39,13 +42,15 @@ export default function LoadMorePosts({ initialPosts }: { initialPosts: any }) {
           created_at={post.created_at}
         />
       ))}
-      <button
-        onClick={loadMore}
-        disabled={loading}
-        className="mt-4 p-2 bg-[#8bf98b] text-black font-semibold rounded"
-      >
-        {loading ? "Cargando..." : "Cargar más publicaciones"}
-      </button>
+      {hasMore && (
+        <button
+          onClick={loadMore}
+          disabled={loading}
+          className="mt-4 p-2 bg-[#8bf98b] text-black font-semibold rounded disabled:cursor-not-allowed"
+        >
+          {loading ? "Cargando..." : "Cargar más publicaciones"}
+        </button>
+      )}
     </>
   );
 }
