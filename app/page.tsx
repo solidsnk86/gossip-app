@@ -1,7 +1,7 @@
 import { LogoIcon } from "../components/LogoIcon";
 import AuthButton from "../components/AuthButton";
 import { createClient } from "@/utils/supabase/server";
-import { ServerPosts } from "@/components/ServerPosts";
+import { HomePosts } from "@/components/HomePosts";
 import { BgGrid } from "@/components/svg/BG-Grid";
 import { Footer } from "@/components/Footer";
 import SideBarLayout from "@/components/Layout";
@@ -57,7 +57,7 @@ export default async function Index() {
               data && data.length > 0 ? (
                 data &&
                 data.map((d) => (
-                  <ServerPosts
+                  <HomePosts
                     id={d.id}
                     avatar_url={d.avatar_url}
                     user_metadata={d.full_name}

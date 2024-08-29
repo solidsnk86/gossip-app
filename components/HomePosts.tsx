@@ -14,7 +14,7 @@ type PostsProps = {
   url: string;
 };
 
-export const ServerPosts: React.FC<PostsProps> = ({
+export const HomePosts: React.FC<PostsProps> = ({
   id,
   avatar_url,
   user_metadata,
