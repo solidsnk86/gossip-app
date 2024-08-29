@@ -28,7 +28,7 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
 
   return (
     <span
-      className="absolute right-5 justify-end hover:bg-zinc-800 p-2 rounded-full"
+      className="absolute right-5 justify-end dark:hover:bg-zinc-800 hover:bg-zinc-300 p-2 rounded-full"
       title={`Eliminar chisme ${title}`}
       onClick={() => handleDelete(id)}
     >

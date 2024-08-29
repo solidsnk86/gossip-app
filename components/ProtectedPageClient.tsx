@@ -6,7 +6,6 @@ import { Posts } from "@/components/Posts";
 import { supabase } from "@/utils/supabase/client";
 import { ProfileHeader } from "./ProfileHeader";
 import { PostsLength } from "./PostsLength";
-import { PreLoader } from "./PreLoader";
 
 export default function ProtectedPageClient({
   user,
@@ -16,7 +15,7 @@ export default function ProtectedPageClient({
   initialData: any;
 }) {
   const [data, setData] = useState(initialData);
-  const [dataLocation, setDataLocation] = useState<any>(null);
+  const [dataLocation, setDataLocation] = useState<any>([]);
   const [editablePostId, setEditablePostId] = useState<string | number | null>(
     null
   );
@@ -31,15 +30,29 @@ export default function ProtectedPageClient({
         const data = await res.json();
 
         if (!res.ok) {
-          console.error("Failed to get data", res.statusText);
+          const rateLimit = res.headers.get("X-RateLimit-Limit");
+          const rateLimitRemaining = res.headers.get("X-RateLimit-Remaining");
+          if (res.status === 429) {
+            console.error(
+              `Rate limit exceeded. Try again later. Limit: ${rateLimit}, Remaining: ${rateLimitRemaining}`
+            );
+            return;
+          }
+          console.error(`Failed to get data: ${res.status} ${res.statusText}`);
         }
 
-        setDataLocation(data);
+        const dataSchema = {
+          city: data.city.name,
+          country: data.country.name,
+        };
+
+        localStorage.setItem("location", JSON.stringify(dataSchema));
+        const savedData = localStorage.getItem("location");
+        setDataLocation(JSON.parse(savedData as string));
       } catch (err) {
         console.error("API limit", err);
       }
     };
-
     getLocation();
   }, []);
 
@@ -88,21 +101,18 @@ export default function ProtectedPageClient({
     }
   };
 
+  console.log(dataLocation.country);
   return (
     <div className="w-full gap-20 items-center">
       <div className="mt-16">
-        {dataLocation ? (
-          <ProfileHeader
-            avatar={user.user_metadata.avatar_url}
-            fullName={user.user_metadata.full_name}
-            user={user.user_metadata.user_name}
-            city={dataLocation.city.name}
-            country={dataLocation.country.name}
-            createdAt={user.created_at}
-          />
-        ) : (
-          <PreLoader />
-        )}
+        <ProfileHeader
+          avatar={user.user_metadata.avatar_url}
+          fullName={user.user_metadata.full_name}
+          user={user.user_metadata.user_name}
+          city={dataLocation.city}
+          country={dataLocation.country}
+          createdAt={user.created_at}
+        />
         <GossipFormClient
           ip={dataLocation?.ip?.address || ""}
           city={dataLocation?.city?.name || ""}

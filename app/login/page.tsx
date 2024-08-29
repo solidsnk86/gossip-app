@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { ShapeSVG } from "@/components/svg/ShapeSVG";
 
 export default function Login({
   searchParams,
@@ -15,7 +14,7 @@ export default function Login({
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: "https://gossip-app.vercel.app/auth/callback",
+        redirectTo: "http://localhost:3000/auth/callback",
       },
     });
 
@@ -51,7 +50,7 @@ export default function Login({
 
       <form
         action={signInWithGitHub}
-        className="grid container dark:bg-zinc-800/60 bg-zinc-200/60 mx-auto w-full justify-center gap-2 text-foreground p-12 relative border border-foreground/10 rounded-xl overflow-hidden"
+        className="grid dark:bg-zinc-800/60 bg-zinc-200/60 mx-auto w-full justify-center gap-2 text-foreground p-12 border border-foreground/10 rounded-xl"
       >
         <h3 className="text-center font-semibold text-3xl pb-2">
           Inciar sesión

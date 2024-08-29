@@ -44,9 +44,9 @@ export const Posts: React.FC<PostsProps> = ({
     <article
       key={id}
       id={`gossip-${id}`}
-      className="flex flex-col space-y-2 bg-btn-background border dark:border-zinc-800 rounded-2xl relative"
+      className="flex flex-col space-y-2 bg-zinc-100 dark:bg-zinc-800/50 border border-foreground/10 dark:border-zinc-800 rounded-2xl relative"
     >
-      <header className="flex gap-[10px] items-center border-b dark:border-zinc-800 p-4">
+      <header className="flex gap-[10px] items-center border-b border-foreground/10 dark:border-zinc-800 p-4">
         <img
           src={avatar_url}
           width={38}
@@ -59,18 +59,18 @@ export const Posts: React.FC<PostsProps> = ({
           <small className="text-zinc-400 font-light">
             {city} • <span>{Format.dateAndTime(created_at)}</span>
           </small>
-          <small className="text-zinc-400 text-xs">
-            {edited === true ? "(editado)" : null}
-          </small>
         </aside>
-        <EditButton onEdit={() => onEdit(id)} />
+        <EditButton onEdit={() => onEdit(id)} title={title} />
         <DeleteButton
           onDelete={() => onDelete && onDelete(id)}
           id={id}
           title={title as string}
         />
       </header>
-      <section className="space-y-2 p-4">
+      <section className="space-y-2 p-4 relative">
+        <small className="text-zinc-400 text-xs absolute right-[26px] top-1">
+          {edited === true ? "(editado)" : null}
+        </small>
         <h4
           id="title"
           contentEditable={editable}
@@ -106,7 +106,7 @@ export const Posts: React.FC<PostsProps> = ({
                 gossipId?.querySelector("#message")?.textContent;
               onSave(id, newTitle as string, newMessage as string, edited);
             }}
-            className="px-2 py-1 bg-zinc-800 rounded-lg border border-foreground/10 w-fit hover:brightness-125 cursor-pointer"
+            className="px-2 py-1 bg-btn-background hover:bg-btn-background-hover rounded-lg border border-foreground/10 w-fit cursor-pointer"
           >
             Guardar
           </button>
