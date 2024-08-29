@@ -51,7 +51,7 @@ export default async function Index() {
               así como noticias y actualizaciones! Buee también chismes...
             </h2>
             {user ? (
-              <h4 className="text-center">Publicaciones de la semana</h4>
+              <h4 className="text-center">Últimas publicaciones</h4>
             ) : null}
             {user ? (
               data && data.length > 0 ? (
@@ -62,7 +62,6 @@ export default async function Index() {
                     avatar_url={d.avatar_url}
                     user_metadata={d.full_name}
                     city={d.city}
-                    title={d.title}
                     message={d.message}
                     url={d.url}
                     created_at={d.created_at}

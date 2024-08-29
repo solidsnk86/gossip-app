@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Format } from "./actions/FormatClass";
 import React from "react";
 import { Tooltip } from "./Tooltip";
+import { ShareButton } from "./actions/ShareButton";
 
 type PostsProps = {
   id: string | number;
@@ -9,7 +10,6 @@ type PostsProps = {
   user_metadata: string;
   city: string;
   created_at: string | number | Date;
-  title?: string;
   message: string;
   url: string;
 };
@@ -20,7 +20,6 @@ export const ServerPosts: React.FC<PostsProps> = ({
   user_metadata,
   city,
   created_at,
-  title,
   message,
   url,
 }) => {
@@ -48,10 +47,10 @@ export const ServerPosts: React.FC<PostsProps> = ({
         </aside>
       </header>
       <section className="space-y-2 p-4">
-        <h4>{title}</h4>
         <p className="text-pretty text-foreground">{message}</p>
-        {url ? (
-          <div className="flex items-center justify-end">
+        <div className="flex items-center justify-between">
+          <ShareButton message={message as string} url={url} />
+          {url ? (
             <Link
               href={url}
               target="_blank"
@@ -60,10 +59,8 @@ export const ServerPosts: React.FC<PostsProps> = ({
             >
               Link
             </Link>
-          </div>
-        ) : (
-          <div className="flex items-center justify-between"></div>
-        )}
+          ) : null}
+        </div>
       </section>
     </article>
   );

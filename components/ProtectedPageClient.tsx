@@ -77,13 +77,12 @@ export default function ProtectedPageClient({
 
   const handleSave = async (
     id: string | number,
-    newTitle: string,
     newMessage: string,
     edited: boolean
   ) => {
     const { data: updatedData, error } = await supabase
       .from("gossip")
-      .update({ title: newTitle, message: newMessage, edited: true })
+      .update({ message: newMessage, edited: true })
       .match({ id })
       .select();
 
@@ -92,16 +91,13 @@ export default function ProtectedPageClient({
     } else if (updatedData) {
       setData(
         data.map((post: any) =>
-          post.id === id
-            ? { ...post, title: newTitle, message: newMessage, edited }
-            : post
+          post.id === id ? { ...post, message: newMessage, edited } : post
         )
       );
       setEditablePostId(null);
     }
   };
 
-  console.log(dataLocation.country);
   return (
     <div className="w-full gap-20 items-center">
       <div className="mt-16">
@@ -131,7 +127,6 @@ export default function ProtectedPageClient({
                   id: number | string;
                   full_name: string;
                   city: string;
-                  title: string | undefined;
                   message: string;
                   avatar_url: string;
                   url: string;
@@ -145,7 +140,6 @@ export default function ProtectedPageClient({
                     user_metadata={d.full_name}
                     city={d.city}
                     created_at={d.created_at}
-                    title={d.title as string}
                     message={d.message}
                     url={d.url}
                     editable={d.id === editablePostId}

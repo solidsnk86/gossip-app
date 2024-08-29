@@ -8,7 +8,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 const formSchema = z.object({
-  title: z.string().min(5, { message: "El campo título es requerido" }).trim(),
   message: z
     .string()
     .min(10, { message: "Mensaje al menos debe tener 10 caracteres" })
@@ -53,7 +52,6 @@ export const GossipFormClient = ({
         ip: ip,
         city: city,
         country: country,
-        title: formData.title,
         message: formData.message,
         url: formData.url,
         user_name: userName,
@@ -100,16 +98,6 @@ export const GossipFormClient = ({
         <h3 className="font-semibold ml-1 my-3">
           Que hay de nuevo {userName}?
         </h3>
-        <input
-          type="text"
-          placeholder="Título"
-          className="w-full p-2 bg-transparent border-b"
-          {...register("title")}
-        />
-        {errors.title && (
-          <small className="error">{errors.title.message as string}</small>
-        )}
-
         <textarea
           id="textarea"
           className="w-full p-2 bg-transparent resize-none border-b"

@@ -10,18 +10,12 @@ type PostsProps = {
   user_metadata: string;
   city: string;
   created_at: string | number | Date;
-  title: string;
   message: string;
   url: string;
   editable: boolean;
   onDelete?: (id: string | number) => void;
   onEdit: (id: string | number) => void;
-  onSave: (
-    id: string | number,
-    title: string,
-    message: string,
-    edited: boolean
-  ) => void;
+  onSave: (id: string | number, message: string, edited: boolean) => void;
   edited: boolean;
 };
 
@@ -31,7 +25,6 @@ export const Posts: React.FC<PostsProps> = ({
   user_metadata,
   city,
   created_at,
-  title,
   message,
   url,
   editable,
@@ -60,24 +53,17 @@ export const Posts: React.FC<PostsProps> = ({
             {city} • <span>{Format.dateAndTime(created_at)}</span>
           </small>
         </aside>
-        <EditButton onEdit={() => onEdit(id)} title={title} />
+        <EditButton onEdit={() => onEdit(id)} title={message} />
         <DeleteButton
           onDelete={() => onDelete && onDelete(id)}
           id={id}
-          title={title as string}
+          title={message as string}
         />
       </header>
       <section className="space-y-2 p-4 relative">
         <small className="text-zinc-400 text-xs absolute right-[26px] top-1">
           {edited === true ? "(editado)" : null}
         </small>
-        <h4
-          id="title"
-          contentEditable={editable}
-          suppressContentEditableWarning={true}
-        >
-          {title}
-        </h4>
         <p
           id="message"
           className="text-pretty text-zinc-400"
@@ -100,11 +86,10 @@ export const Posts: React.FC<PostsProps> = ({
           <button
             onClick={() => {
               const gossipId = document.getElementById(`gossip-${id}`);
-              const newTitle = gossipId?.querySelector("#title")?.textContent;
               const edited = true;
               const newMessage =
                 gossipId?.querySelector("#message")?.textContent;
-              onSave(id, newTitle as string, newMessage as string, edited);
+              onSave(id, newMessage as string, edited);
             }}
             className="px-2 py-1 bg-btn-background hover:bg-btn-background-hover rounded-lg border border-foreground/10 w-fit cursor-pointer"
           >
