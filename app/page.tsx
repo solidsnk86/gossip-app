@@ -52,7 +52,10 @@ export default async function Index() {
               así como noticias y actualizaciones! Buee también chismes...
             </h2>
             {user ? (
-              <h4 className="text-center my-2">Últimas publicaciones</h4>
+              <>
+                <h4 className="text-center my-2">Últimas publicaciones</h4>
+                <LoadMorePosts initialPosts={data || []} />
+              </>
             ) : null}
             {user ? (
               data && data.length > 0 ? (
@@ -79,7 +82,6 @@ export default async function Index() {
                 </div>
               )
             ) : null}
-            <LoadMorePosts initialPosts={data || []} />
             <div className="border border-foreground/10 dark:bg-zinc-800/50 bg-zinc-200/50 h-60 rounded-lg mx-auto my-10 flex items-center justify-center p-6 text-center relative overflow-hidden">
               <p>
                 Esta aplicación está en desarrollo, por lo cual puede contener
