@@ -50,3 +50,36 @@ create policy "Avatar images are publicly accessible." on storage.objects
 
 create policy "Anyone can upload an avatar." on storage.objects
   for insert with check (bucket_id = 'avatars');
+
+-- Se crea tabla para los chismes
+create table
+  public.gossip (
+    id uuid not null default gen_random_uuid (),
+    ip character varying not null,
+    full_name character varying(255) not null,
+    avatar_url text null,
+    city character varying(255) not null,
+    message character varying(255) not null,
+    created_at timestamp with time zone null default current_timestamp,
+    url text null,
+    country character varying(255) null,
+    flag character varying(255) null,
+    views integer null,
+    user_name character varying null,
+    edited boolean null,
+    parent_id uuid null,
+    constraint gossip_pkey primary key (id),
+    constraint gossip_parent_id_fkey foreign key (parent_id) references gossip (id)
+  ) tablespace pg_default;
+
+-- Tabla agregada para respuestas y notificaciones
+alter table public.gossip add column parent_id uuid references public.gossip(id)
+
+-- Creamos la tabla para nostificaciones
+create table public.notifications (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid references public.profiles(id),
+  gossip_id uuid references public.gossip(id),
+  created_at timestamp with time zone default current_timestamp,
+  read boolean default false
+);

@@ -76,9 +76,6 @@ export default async function Index() {
                   <h4 className="text-lg font-semibold">
                     Nada de chismes por aquí...🥱
                   </h4>
-                  <h4 className="text-lg font-semibold">
-                    Inicia sesión para comentar algo!
-                  </h4>
                 </div>
               )
             ) : null}
