@@ -33,15 +33,17 @@ Sigue estos pasos para configurar ChismeApp localmente:
 2. Navega al directorio del proyecto:
 
 ```bash
-Copiar código
 cd chismeapp
 ```
 
 3. Instala las dependencias:
 
 ```bash
-Copiar código
 npm install
+
+o
+
+pnpm install
 ```
 
 4. Configura las variables de entorno:
@@ -60,8 +62,11 @@ GITHUB_CLIENT_SECRET=tu-client-secret-de-github
 5. Inicia el servidor de desarrollo:
 
 ```bash
-Copiar código
 npm run dev
+
+o
+
+pnpm run dev
 ```
 
 6. Abre http://localhost:3000 en tu navegador para ver la aplicación en acción.
