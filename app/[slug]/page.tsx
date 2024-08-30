@@ -17,20 +17,15 @@ export default async function ProtectedPage() {
     return redirect("/login");
   }
 
-  const loadData = async () => {
-    const { data, error } = await supabase
-      .from("gossip")
-      .select("*")
-      .eq("full_name", user.user_metadata.full_name)
-      .order("created_at", { ascending: false });
+  const { data, error } = await supabase
+    .from("gossip")
+    .select("*")
+    .eq("full_name", user.user_metadata.full_name)
+    .order("created_at", { ascending: false });
 
-    if (error) {
-      console.error("Something went wrong", error);
-    }
-    return data;
-  };
-
-  const data = await loadData();
+  if (error) {
+    console.error("Something went wrong", error);
+  }
 
   return (
     <SideBarLayout userProfile={user.user_metadata.user_name}>
