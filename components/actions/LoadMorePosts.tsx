@@ -20,7 +20,7 @@ export default function LoadMorePosts({ initialPosts }: { initialPosts: any }) {
     if (error) {
       console.error("Cannot load more posts", error.message);
     } else {
-      if (data.length < 10 && data.length === 0) {
+      if (data.length < 10 || data.length === 0) {
         setHasMore(false);
       }
       setPosts((prevPosts: []) => [...prevPosts, ...data]);
