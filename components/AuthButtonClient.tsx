@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Tooltip } from "./Tooltip";
-import { User, Home, LogOut } from "lucide-react";
+import { User, Home, LogOut, Share2 } from "lucide-react";
 
 export function AuthButtonClient({
   user,
@@ -55,6 +54,22 @@ export function AuthButtonClient({
               <User className="w-5 h-5 inline mr-3" />
               Perfil
             </Link>
+            <button
+              onClick={() => {
+                if (navigator.share) {
+                  navigator.share({
+                    title: document.title,
+                    text: "Ey! que esperas... Ven y traéme tu chisme! 🧉",
+                    url: location.href,
+                  });
+                }
+              }}
+              className="w-full text-left px-4 py-2 text-sm text-white hover:bg-zinc-700"
+              aria-disabled
+            >
+              <Share2 className="w-5 h-5 inline mr-3" />
+              Compartir
+            </button>
             <button
               onClick={async () => {
                 setIsMenuOpen(false);

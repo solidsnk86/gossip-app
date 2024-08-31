@@ -96,9 +96,9 @@ export const GossipFormClient = ({
   return (
     <form
       onSubmit={handleSubmit(handleFormSubmit)}
-      className="w-[100%] my-20 gap-3 border-b border-foreground/10"
+      className="w-[100%] my-10 gap-3 border-b border-foreground/10"
     >
-      <section className="flex flex-col xl:max-w-xl max-w-[80%] justify-center mx-auto my-10 bg-zinc-100 dark:bg-zinc-800/50 border border-foreground/10 dark:border-zinc-800 rounded-2xl p-4">
+      <section className="flex flex-col xl:max-w-xl justify-center mx-auto my-10 p-4">
         <h3 className="font-semibold ml-1 my-3">
           Que hay de nuevo {userName}?
         </h3>

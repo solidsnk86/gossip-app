@@ -6,7 +6,7 @@ type PostsLengthProps = {
 
 export const PostsLength: React.FC<PostsLengthProps> = ({ dataLength }) => {
   return (
-    <div className="my-10 w-fit justify-center mx-auto">
+    <div className="mb-6 w-fit justify-center mx-auto">
       {dataLength && dataLength.length > 0 ? (
         <h4 className="px-3 py-1 dark:bg-zinc-800/60 bg-zinc-200 rounded-full">
           Tus publicaciones {dataLength.length}

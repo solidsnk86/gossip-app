@@ -5,7 +5,7 @@ export const BgGrid = (props, style) => {
       xmlns="http://www.w3.org/2000/svg"
       width="513"
       height="272"
-      fill="none"
+      fill="yellow"
       {...attrs}
     >
       <g clipPath="url(#a)" style={style}>

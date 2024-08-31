@@ -6,29 +6,39 @@ import { BgGrid } from "@/components/svg/BG-Grid";
 import { Footer } from "@/components/Footer";
 import SideBarLayout from "@/components/Layout";
 import { HeroLogo } from "@/components/HeroLogo";
-import LoadMorePosts from "@/components/actions/LoadMorePosts";
+import { MessageSquareWarning } from "lucide-react";
+
+export const canInitSupabaseClient = () => {
+  try {
+    createClient();
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
 
 export default async function Index() {
-  const canInitSupabaseClient = () => {
+  const isSupabaseConnected = canInitSupabaseClient();
+  const supabase = createClient();
+
+  const fetchData = async () => {
     try {
-      createClient();
-      return true;
-    } catch (e) {
-      return false;
+      const { data, error } = await supabase
+        .from("gossip")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(10);
+
+      if (error) {
+        console.error("Could not get data", error);
+      }
+      return data;
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 
-  const isSupabaseConnected = canInitSupabaseClient();
-  const supabase = createClient();
-  const { data, error } = await supabase
-    .from("gossip")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .limit(10);
-
-  if (error) {
-    console.error("Could not get data", error);
-  }
+  const data = await fetchData();
 
   const {
     data: { user },
@@ -52,16 +62,10 @@ export default async function Index() {
               así como noticias y actualizaciones! Buee también chismes...
             </h2>
             {user ? (
-              <>
-                <h4 className="text-center my-2">Últimas publicaciones</h4>
-                <LoadMorePosts initialPosts={data || []} />
-              </>
-            ) : null}
-            {user ? (
               data && data.length > 0 ? (
-                data &&
                 data.map((d) => (
                   <HomePosts
+                    key={d.id}
                     id={d.id}
                     avatar_url={d.avatar_url}
                     user_metadata={d.full_name}
@@ -79,13 +83,21 @@ export default async function Index() {
                 </div>
               )
             ) : null}
+            {!user ? (
+              <div className="text-center my-10">
+                <h4 className="text-lg font-semibold">
+                  Inicia sesión para para compartir lo que sabes...
+                </h4>
+              </div>
+            ) : null}
             <div className="card-outline border border-foreground/10 dark:bg-zinc-800/50 bg-zinc-200/50 h-60 rounded-xl mx-auto my-10 flex items-center justify-center p-6 text-center relative overflow-hidden">
+              <MessageSquareWarning className="inline w-12 h-12 text-amber-600" />
               <p>
                 Esta aplicación está en desarrollo, por lo cual puede contener
                 bugs 🐞, también hay funciones que se están agregando y están
                 bloqueadas así que paciencia!
               </p>
-              <BgGrid className="absolute top-0" />
+              <BgGrid className="absolute top-0 fill-amber-600" />
             </div>
           </main>
         </div>

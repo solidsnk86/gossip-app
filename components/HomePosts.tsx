@@ -3,7 +3,6 @@ import { Format } from "./actions/FormatClass";
 import React from "react";
 import { Tooltip } from "./Tooltip";
 import { ShareButton } from "./actions/ShareButton";
-import { ResponseButton } from "./actions/ResponseButton";
 
 type PostsProps = {
   id: string | number;
@@ -51,7 +50,6 @@ export const HomePosts: React.FC<PostsProps> = ({
         <p className="text-pretty text-foreground">{message}</p>
         <div className="flex items-center justify-between">
           <ShareButton message={message as string} url={url} />
-          <ResponseButton user={user_metadata} />
           {url ? (
             <Link
               href={url}

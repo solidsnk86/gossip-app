@@ -95,12 +95,14 @@ export default function ProtectedPageClient({
     <div className="w-full gap-20 items-center">
       <div className="mt-16">
         <ProfileHeader
+          id={user.id}
           avatar={user.user_metadata.avatar_url}
           fullName={user.user_metadata.full_name}
           user={user.user_metadata.user_name}
           city={dataLocation?.city?.name}
           country={dataLocation?.country?.name}
           createdAt={user.created_at}
+          onEdit={handleEdit}
         />
         <GossipFormClient
           ip={dataLocation?.ip?.address}
