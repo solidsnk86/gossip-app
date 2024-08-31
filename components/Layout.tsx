@@ -1,8 +1,7 @@
-"use client";
-
 import { User2, Home, Bell, Mail, Share2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { Share } from "./actions/Sahare";
 
 export default async function SideBarLayout({
   children,
@@ -29,7 +28,7 @@ export default async function SideBarLayout({
             {
               name: "Mensajes",
               url: "#",
-              icon: <Mail className="w-5 h-5 inline mr-6" />,
+              icon: <Mail className="w-5 h-5 inline mr-6 cursor-not-allowed" />,
             },
             {
               name: "Perfil",
@@ -48,21 +47,7 @@ export default async function SideBarLayout({
             </li>
           ))}
           <li className="flex items-center hover:bg-btn-background-hover dark:hover:bg-zinc-800 rounded-lg">
-            <button
-              onClick={() => {
-                if (navigator.share) {
-                  navigator.share({
-                    title: document.title,
-                    text: "Ey! que esperas... Ven y traéme tu chisme! 🧉",
-                    url: location.href,
-                  });
-                }
-              }}
-              className="text-xl font-medium text-foreground flex items-center w-full p-2"
-            >
-              <Share2 className="w-5 h-5 inline mr-6" />
-              Compartir
-            </button>
+            <Share />
           </li>
         </ul>
       </aside>
