@@ -25,7 +25,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     <header className="flex flex-col w-[100%] border-b border-foreground/10">
       <div className="relative">
         <img
-          src="https://www.transparenttextures.com/patterns/asfalt-dark.png"
+          src="/Screenshot_20240720-223312.png"
           alt="Cover"
           className="w-full h-40 object-cover"
         />
