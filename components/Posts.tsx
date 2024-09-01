@@ -54,11 +54,15 @@ export const Posts: React.FC<PostsProps> = ({
             {city} • <span>{Format.dateAndTime(created_at)}</span>
           </small>
         </aside>
-        <EditButton onEdit={() => onEdit(id)} title={message} />
+        <EditButton
+          onEdit={() => onEdit(id)}
+          className="right-16"
+          title={Format.dateAndTime(created_at)}
+        />
         <DeleteButton
           onDelete={() => onDelete && onDelete(id)}
           id={id}
-          title={message as string}
+          title={Format.dateAndTime(created_at)}
         />
       </header>
       <section className="space-y-2 p-4 relative">

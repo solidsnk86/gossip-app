@@ -85,7 +85,11 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           <>
             <p className="text-pretty w-11/12">{content}</p>
             <div className="absolute -top-10 right-0">
-              <EditButton onEdit={handleEdit} title={user} />
+              <EditButton
+                onEdit={handleEdit}
+                title={user}
+                className="right-5 -top-[72px]"
+              />
             </div>
           </>
         )}
