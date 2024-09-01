@@ -76,9 +76,15 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             />
             <button
               onClick={handleSave}
-              className="px-2 py-1 bg-btn-background hover:bg-btn-background-hover rounded-lg border border-foreground/10 w-fit cursor-pointer mt-2"
+              className="px-[6px] mr-4 bg-btn-background hover:bg-btn-background-hover rounded-md border border-foreground/10 w-fit cursor-pointer mt-2"
             >
               Guardar
+            </button>
+            <button
+              onClick={() => setIsEditing(false)}
+              className="px-[6px] bg-btn-background hover:bg-btn-background-hover rounded-md border border-foreground/10 w-fit cursor-pointer mt-2"
+            >
+              Cerrar
             </button>
           </>
         ) : (
