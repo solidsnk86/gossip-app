@@ -4,15 +4,13 @@ import { LogoIcon } from "@/components/LogoIcon";
 import { createClient } from "@/utils/supabase/server";
 import { Footer } from "@/components/Footer";
 
-const supabase = createClient();
-
 export default async function Notifications() {
+  const supabase = createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
   return (
-    <SideBarLayout userProfile={user && user.user_metadata.user_name}>
+    <SideBarLayout userProfile={user?.user_metadata.user_name}>
       <div className="flex-1 w-full flex flex-col gap-20 items-center">
         <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-slate-300/15 backdrop-blur-md fixed top-0 left-0 z-50">
           <div className="w-full flex justify-between items-center p-3 text-sm">

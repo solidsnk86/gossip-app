@@ -8,16 +8,16 @@ import SideBarLayout from "@/components/Layout";
 import { HeroLogo } from "@/components/HeroLogo";
 import { MessageSquareWarning } from "lucide-react";
 
-export const canInitSupabaseClient = () => {
-  try {
-    createClient();
-    return true;
-  } catch (e) {
-    return false;
-  }
-};
-
 export default async function Index() {
+  const canInitSupabaseClient = () => {
+    try {
+      createClient();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
+
   const isSupabaseConnected = canInitSupabaseClient();
   const supabase = createClient();
 

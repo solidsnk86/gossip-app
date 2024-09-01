@@ -34,8 +34,7 @@
     "components/svg/BG-Grid.js",
     "components/svg/BG-Grid.js",
     "components/svg/BG-Grid.js",
-    "app/notifications/page.js",
-    "components/LoadPosts.js"
+    "app/notifications/page.tsx"
   ],
   "exclude": ["node_modules"]
 }

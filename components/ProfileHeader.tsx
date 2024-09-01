@@ -8,7 +8,6 @@ type ProfileHeaderProps = {
   fullName: string;
   user: string;
   avatar: string;
-  editable?: boolean;
   city: string;
   country: string;
   createdAt: string | number;
@@ -20,7 +19,6 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   fullName,
   user,
   avatar,
-  editable,
   city,
   country,
   createdAt,
@@ -55,11 +53,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
         <p className="text-zinc-400">@{user}</p>
       </div>
       <main className="px-5 mt-2">
-        <p
-          contentEditable={true}
-          suppressContentEditableWarning={true}
-          onBlur={() => {}}
-        >
+        <p contentEditable={true} suppressContentEditableWarning={true}>
           Front End Developer - React | Next.js | Node.js | Javascript |
           Supabase | PostgreeSQL | Python
         </p>

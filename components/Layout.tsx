@@ -28,7 +28,7 @@ export default async function SideBarLayout({
             {
               name: "Mensajes",
               url: "#",
-              icon: <Mail className="w-5 h-5 inline mr-6 cursor-not-allowed" />,
+              icon: <Mail className="w-5 h-5 inline mr-6" />,
             },
             {
               name: "Perfil",
@@ -39,7 +39,9 @@ export default async function SideBarLayout({
             <li className="flex items-center hover:bg-btn-background-hover dark:hover:bg-zinc-800 rounded-lg">
               <Link
                 href={list.url}
-                className="text-xl font-medium text-foreground flex items-center w-full p-2"
+                className={`text-xl font-medium text-foreground flex items-center w-full p-2 ${
+                  list.name === "Mensajes" ? "cursor-not-allowed" : ""
+                }`}
               >
                 {list.icon}
                 {list.name}
