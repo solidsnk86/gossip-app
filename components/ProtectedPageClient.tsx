@@ -19,35 +19,34 @@ export default function ProtectedPageClient({
   const [editablePostId, setEditablePostId] = useState<string | number | null>(
     null
   );
+  const [profileContent, setProfileContent] = useState("");
+  const [profileHeaderId, setProfileHeaderId] = useState<number | null>(null);
 
-  useEffect(() => {
-    const getLocation = async () => {
-      try {
-        const api = {
-          url: "https://geolocation.microlink.io",
-        };
-        const res = await fetch(api.url);
-        const data = await res.json();
+  const getLocation = async () => {
+    try {
+      const api = {
+        url: "https://geolocation.microlink.io",
+      };
+      const res = await fetch(api.url);
+      const data = await res.json();
 
-        if (!res.ok) {
-          const rateLimit = res.headers.get("X-RateLimit-Limit");
-          const rateLimitRemaining = res.headers.get("X-RateLimit-Remaining");
-          if (res.status === 429) {
-            console.error(
-              `Rate limit exceeded. Try again later. Limit: ${rateLimit}, Remaining: ${rateLimitRemaining}`
-            );
-            return;
-          }
-          console.error(`Failed to get data: ${res.status} ${res.statusText}`);
+      if (!res.ok) {
+        const rateLimit = res.headers.get("X-RateLimit-Limit");
+        const rateLimitRemaining = res.headers.get("X-RateLimit-Remaining");
+        if (res.status === 429) {
+          console.error(
+            `Rate limit exceeded. Try again later. Limit: ${rateLimit}, Remaining: ${rateLimitRemaining}`
+          );
+          return;
         }
-
-        setDataLocation(data);
-      } catch (err) {
-        console.error("API limit", err);
+        console.error(`Failed to get data: ${res.status} ${res.statusText}`);
       }
-    };
-    getLocation();
-  }, []);
+
+      setDataLocation(data);
+    } catch (err) {
+      console.error("API limit", err);
+    }
+  };
 
   const handleRefresh = async () => {
     const { data: refreshedData, error } = await supabase
@@ -91,6 +90,61 @@ export default function ProtectedPageClient({
     }
   };
 
+  const handleSaveContent = async (newContent: string) => {
+    if (profileHeaderId === null) {
+      const { data: insertedData, error: insertError } = await supabase
+        .from("profile_header")
+        .insert({ content: newContent, user_id: user.id })
+        .select()
+        .single();
+
+      if (insertError) {
+        console.error("Error creating profile header", insertError.message);
+        return;
+      }
+
+      setProfileHeaderId(insertedData.id);
+      setProfileContent(newContent);
+    } else {
+      const { data: updatedData, error: updateError } = await supabase
+        .from("profile_header")
+        .update({ content: newContent })
+        .eq("id", profileHeaderId)
+        .select();
+
+      if (updateError) {
+        console.error("Error updating content profile", updateError.message);
+        return;
+      }
+    }
+
+    setProfileContent(newContent);
+  };
+
+  const getContent = async () => {
+    const { data, error } = await supabase
+      .from("profile_header")
+      .select("id, content")
+      .eq("user_id", user.id)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        console.log("No profile header found for this user");
+      } else {
+        console.error("Error fetching profile content", error.message);
+      }
+    } else if (data) {
+      setProfileHeaderId(data.id);
+      setProfileContent(data.content || "");
+    }
+  };
+
+  useEffect(() => {
+    getLocation();
+    getContent();
+  }, []);
+
   return (
     <div className="w-full gap-20 items-center">
       <div className="mt-16">
@@ -103,6 +157,8 @@ export default function ProtectedPageClient({
           country={dataLocation?.country?.name}
           createdAt={user.created_at}
           onEdit={handleEdit}
+          onSave={handleSaveContent}
+          content={profileContent}
         />
         <GossipFormClient
           ip={dataLocation?.ip?.address}

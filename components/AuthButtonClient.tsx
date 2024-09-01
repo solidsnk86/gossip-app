@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { User, Home, LogOut, Share2 } from "lucide-react";
 
@@ -12,10 +12,24 @@ export function AuthButtonClient({
   signOut: () => Promise<void>;
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="relative flex items-center gap-4">
@@ -37,7 +51,10 @@ export function AuthButtonClient({
 
       <div className="md:hidden">
         {isMenuOpen && (
-          <div className="absolute top-10 right-0 w-48 bg-zinc-800 border border-zinc-700 rounded-lg shadow-lg z-10">
+          <div
+            ref={menuRef}
+            className="absolute top-10 right-0 w-48 bg-zinc-800 border border-zinc-700 rounded-lg shadow-lg z-10"
+          >
             <Link
               className="block px-4 py-2 text-sm text-white hover:bg-zinc-700 rounded-t-lg"
               href="/"

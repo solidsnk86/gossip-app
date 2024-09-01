@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CalendarDays, MapPin } from "lucide-react";
 import { Format } from "./actions/FormatClass";
 import { EditButton } from "./actions/EditButton";
@@ -11,7 +11,10 @@ type ProfileHeaderProps = {
   city: string;
   country: string;
   createdAt: string | number;
+  content: string | number | any;
+  editable?: boolean;
   onEdit: (id: string | number) => void;
+  onSave: (content: string) => void;
 };
 
 export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
@@ -22,8 +25,21 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   city,
   country,
   createdAt,
-  onEdit,
+  content,
+  onSave,
 }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedContent, setEditedContent] = useState(content);
+
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
+  const handleSave = () => {
+    onSave(editedContent);
+    setIsEditing(false);
+  };
+
   return (
     <header
       className="flex flex-col w-[100%] border-b border-foreground/10"
@@ -45,18 +61,32 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           />
         </div>
       </div>
-      <span className="relative float-right top-6">
-        <EditButton onEdit={() => onEdit(id)} title={user} />
-      </span>
+      <span className="relative float-right top-6"></span>
       <div className="px-5 pt-[66px]">
         <p className="text-2xl font-bold">{fullName}</p>
         <p className="text-zinc-400">@{user}</p>
       </div>
       <main className="px-5 mt-2">
-        <p contentEditable={true} suppressContentEditableWarning={true}>
-          Front End Developer - React | Next.js | Node.js | Javascript |
-          Supabase | PostgreeSQL | Python
-        </p>
+        {isEditing ? (
+          <>
+            <textarea
+              value={editedContent}
+              onChange={(e) => setEditedContent(e.target.value)}
+              className="w-full p-2 border rounded-md bg-transparent border-foreground/10 text-foreground text-pretty"
+            />
+            <button
+              onClick={handleSave}
+              className="px-2 py-1 bg-btn-background hover:bg-btn-background-hover rounded-lg border border-foreground/10 w-fit cursor-pointer mt-2"
+            >
+              Guardar
+            </button>
+          </>
+        ) : (
+          <>
+            <p>{content}</p>
+            <EditButton onEdit={handleEdit} title={user} />
+          </>
+        )}
       </main>
       <aside className="grid text-zinc-400 my-4 px-5">
         <small className="flex items-center">

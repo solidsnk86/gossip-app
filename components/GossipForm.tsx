@@ -98,20 +98,20 @@ export const GossipFormClient = ({
       onSubmit={handleSubmit(handleFormSubmit)}
       className="w-[100%] my-10 gap-3 border-b border-foreground/10"
     >
-      <section className="flex flex-col xl:max-w-xl justify-center mx-auto my-10 p-4">
-        <h3 className="font-semibold ml-1 my-3">
+      <section className="flex flex-col xl:max-w-xl justify-center mx-auto my-10">
+        <h3 className="font-semibold ml-4 my-3">
           Que hay de nuevo {userName}?
         </h3>
         <textarea
           id="textarea"
           className="w-full p-2 bg-transparent resize-none border-b"
-          placeholder="Contáte algo che..."
+          placeholder="  Contáte algo che..."
           {...register("message")}
           onInput={handleInput}
           onChange={() => resize}
           maxLength={MAX_CHARS}
         ></textarea>
-        <div className="text-xs ml-[6px] mt-2 space-x-2 text-zinc-400">
+        <div className="text-xs ml-4 mt-2 space-x-2 text-zinc-400">
           {charCount < 10 ? (
             <>
               <span>
@@ -133,7 +133,7 @@ export const GossipFormClient = ({
 
         <input
           type="text"
-          placeholder="¿URL del artículo?"
+          placeholder="  ¿URL del artículo?"
           className="w-full p-2 bg-transparent border-b my-4"
           {...register("url")}
         />
@@ -141,7 +141,7 @@ export const GossipFormClient = ({
           <small className="error">{errors.url.message as string}</small>
         )}
 
-        <div className="flex justify-end my-2">
+        <div className="flex justify-end my-2 mr-4">
           <button
             type="submit"
             className="px-2 py-1 bg-btn-background hover:bg-btn-background-hover rounded-lg border border-foreground/10 w-fit cursor-pointer disabled:cursor-not-allowed"
