@@ -66,7 +66,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
         <p className="text-2xl font-bold">{fullName}</p>
         <p className="text-zinc-400">@{user}</p>
       </div>
-      <main className="px-5 mt-2">
+      <main className="px-5 mt-2 relative">
         {isEditing ? (
           <>
             <textarea
@@ -83,8 +83,10 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           </>
         ) : (
           <>
-            <p>{content}</p>
-            <EditButton onEdit={handleEdit} title={user} />
+            <p className="text-pretty w-11/12">{content}</p>
+            <div className="absolute -top-10 right-0">
+              <EditButton onEdit={handleEdit} title={user} />
+            </div>
           </>
         )}
       </main>
