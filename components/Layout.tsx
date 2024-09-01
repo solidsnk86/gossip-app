@@ -27,7 +27,7 @@ export default async function SideBarLayout({
             },
             {
               name: "Mensajes",
-              url: "#",
+              url: "/login",
               icon: <Mail className="w-5 h-5 inline mr-6" />,
             },
             {
