@@ -13,7 +13,7 @@ export default async function ProtectedPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (user?.aud !== "authenticated") {
+  if (!user) {
     return redirect("/login");
   }
 

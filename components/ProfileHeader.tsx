@@ -11,10 +11,10 @@ type ProfileHeaderProps = {
   city: string;
   country: string;
   createdAt: string | number;
-  content: string | number | any;
+  content?: string | number | any;
   editable?: boolean;
-  onEdit: (id: string | number) => void;
-  onSave: (content: string) => void;
+  onEdit?: (id: string | number) => void;
+  onSave?: (content: string) => void;
 };
 
 export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
@@ -36,7 +36,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   };
 
   const handleSave = () => {
-    onSave(editedContent);
+    onSave && onSave(editedContent);
     setIsEditing(false);
   };
 
