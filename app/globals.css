@@ -62,7 +62,7 @@
       );
       position: absolute;
       inset: 0;
-      animation: rotate 2.3s cubic-bezier(0.75, 0.5, 1, 1.11) infinite;
+      animation: rotate 2.5s cubic-bezier(1, 0.8, 0.96, 1) infinite;
     }
     &:after {
       content: "";
