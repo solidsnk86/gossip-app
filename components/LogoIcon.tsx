@@ -1,5 +1,3 @@
-import numberOf from "@/package.json";
-
 export const LogoIcon = () => {
   return (
     <a
@@ -15,8 +13,8 @@ export const LogoIcon = () => {
         className="mr-1"
       />
       ChismeApp
-      <small className="flex text-orange-300 translate-y-[2px] text-xs">
-        v{numberOf.version}
+      <small className="flex bg-orange-300 translate-y-[2px] ml-1 text-xs text-black font-bold p-1 rounded-xl">
+        BETA
       </small>
     </a>
   );

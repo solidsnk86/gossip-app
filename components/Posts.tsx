@@ -35,7 +35,7 @@ export const Posts: React.FC<PostsProps> = ({
   edited,
 }) => {
   return (
-    <article
+    <section
       key={id}
       id={`gossip-${id}`}
       className="flex flex-col space-y-2 bg-zinc-100 dark:bg-zinc-800/50 border border-foreground/10 dark:border-zinc-800 rounded-2xl relative"
@@ -65,7 +65,7 @@ export const Posts: React.FC<PostsProps> = ({
           title={Format.dateAndTime(created_at)}
         />
       </header>
-      <section className="space-y-2 p-4 relative">
+      <div className="space-y-2 p-4 relative">
         <small className="text-zinc-400 text-xs absolute right-[26px] top-1">
           {edited === true ? "(editado)" : null}
         </small>
@@ -104,7 +104,7 @@ export const Posts: React.FC<PostsProps> = ({
             Guardar
           </button>
         )}
-      </section>
-    </article>
+      </div>
+    </section>
   );
 };
