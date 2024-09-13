@@ -90,12 +90,12 @@ export default async function Index() {
                 </h4>
               </div>
             ) : null}
-            <div className="card-outline border border-foreground/10 dark:bg-zinc-800/50 bg-zinc-200/50 h-60 rounded-xl mx-auto my-10 flex items-center justify-center p-6 text-center relative overflow-hidden">
+            <div className="card-outline border border-foreground/10 dark:bg-zinc-800/50 bg-zinc-200/50 h-60 rounded-xl mx-auto my-10 flex items-center justify-center p-6 text-center relative overflow-hidden card">
               <MessageSquareWarning className="inline w-12 h-12 text-amber-600" />
               <p>
-                Esta aplicación está en desarrollo, por lo cual puede contener
-                bugs 🐞, también hay funciones que se están agregando y están
-                bloqueadas así que paciencia!
+                Esta aplicación está en desarrollo y es una versión (beta), por
+                lo cual puede contener bugs 🐞, también hay funciones que se
+                están agregando y otras mejoras...
               </p>
               <BgGrid className="absolute top-0 fill-amber-600" />
             </div>

@@ -13,7 +13,7 @@ export const LogoIcon = () => {
         className="mr-1"
       />
       ChismeApp
-      <small className="flex bg-orange-300 translate-y-[2px] ml-1 text-xs text-black font-bold p-1 rounded-xl">
+      <small className="flex bg-orange-300 translate-y-[2px] ml-1 text-xs text-black font-bold px-1 rounded-xl">
         BETA
       </small>
     </a>
