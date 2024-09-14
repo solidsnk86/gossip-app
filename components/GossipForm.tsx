@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { supabase } from "@/utils/supabase/client";
 import React from "react";
 import { useState, useEffect } from "react";
+import { FormProps } from "@/app/types/definitions";
 
 const formSchema = z.object({
   message: z
@@ -20,7 +21,7 @@ type FormData = z.infer<typeof formSchema>;
 
 const MAX_CHARS = 300;
 
-export const GossipFormClient = ({
+export const GossipFormClient: React.FC<FormProps> = ({
   ip,
   city,
   country,
@@ -28,14 +29,6 @@ export const GossipFormClient = ({
   fullName,
   avatar,
   onRefresh,
-}: {
-  ip?: string;
-  city?: string;
-  country?: string;
-  userName: string;
-  fullName?: string;
-  avatar?: string;
-  onRefresh: () => Promise<any>;
 }) => {
   const {
     register,

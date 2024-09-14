@@ -3,18 +3,9 @@ import { Format } from "./actions/FormatClass";
 import React from "react";
 import { Tooltip } from "./Tooltip";
 import { ShareButton } from "./actions/ShareButton";
+import { HomePostsProps } from "@/app/types/definitions";
 
-type PostsProps = {
-  id: string | number;
-  avatar_url: string;
-  user_metadata: string;
-  city: string;
-  created_at: string | number | Date;
-  message: string;
-  url: string;
-};
-
-export const HomePosts: React.FC<PostsProps> = ({
+export const HomePosts: React.FC<HomePostsProps> = ({
   id,
   avatar_url,
   user_metadata,

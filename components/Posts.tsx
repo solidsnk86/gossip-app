@@ -4,21 +4,7 @@ import { Format } from "./actions/FormatClass";
 import { DeleteButton } from "@/components/actions/DeleteButton";
 import { EditButton } from "./actions/EditButton";
 import { ShareButton } from "./actions/ShareButton";
-
-type PostsProps = {
-  id: string | number;
-  avatar_url: string;
-  user_metadata: string;
-  city: string;
-  created_at: string | number | Date;
-  message: string;
-  url: string;
-  editable: boolean;
-  onDelete?: (id: string | number) => void;
-  onEdit?: (id: string | number) => void;
-  onSave?: (id: string | number, message: string, edited: boolean) => void;
-  edited: boolean;
-};
+import { PostsProps } from "@/app/types/definitions";
 
 export const Posts: React.FC<PostsProps> = ({
   id,

@@ -2,12 +2,7 @@
 
 import React from "react";
 import { Pencil } from "lucide-react";
-
-type EditButtonProps = {
-  className?: string;
-  onEdit: () => void;
-  title: string;
-};
+import { EditButtonProps } from "@/app/types/definitions";
 
 export const EditButton: React.FC<EditButtonProps> = ({
   onEdit,

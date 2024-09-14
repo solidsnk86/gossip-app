@@ -2,11 +2,7 @@
 
 import { MessageSquareMore } from "lucide-react";
 import React from "react";
-
-type ResponseButtonProps = {
-  user: string;
-  onResponse?: () => void;
-};
+import { ResponseButtonProps } from "@/app/types/definitions";
 
 export const ResponseButton: React.FC<ResponseButtonProps> = ({
   user,

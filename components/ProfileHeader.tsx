@@ -2,20 +2,7 @@ import React, { useState } from "react";
 import { CalendarDays, MapPin } from "lucide-react";
 import { Format } from "./actions/FormatClass";
 import { EditButton } from "./actions/EditButton";
-
-type ProfileHeaderProps = {
-  id: string | number;
-  fullName: string;
-  user: string;
-  avatar: string;
-  city: string;
-  country: string;
-  createdAt: string | number;
-  content?: string | number | any;
-  editable?: boolean;
-  onEdit?: (id: string | number) => void;
-  onSave?: (content: string) => void;
-};
+import { ProfileHeaderProps } from "@/app/types/definitions";
 
 export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   id,

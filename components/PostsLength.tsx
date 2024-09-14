@@ -1,10 +1,6 @@
 import React from "react";
 
-type PostsLengthProps = {
-  dataLength: any;
-};
-
-export const PostsLength: React.FC<PostsLengthProps> = ({ dataLength }) => {
+export const PostsLength = ({ dataLength }: { dataLength: any }) => {
   return (
     <div className="mb-6 w-fit justify-center mx-auto">
       {dataLength && dataLength.length > 0 ? (

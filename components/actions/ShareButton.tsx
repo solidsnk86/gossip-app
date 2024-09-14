@@ -2,11 +2,7 @@
 
 import React from "react";
 import { MessageSquareShareIcon } from "lucide-react";
-
-interface ShareProps {
-  message: string;
-  url?: string | URL;
-}
+import { ShareProps } from "@/app/types/definitions";
 
 export const ShareButton: React.FC<ShareProps> = ({ message, url }) => {
   const shareContent = () => {
