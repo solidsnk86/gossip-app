@@ -50,13 +50,13 @@ export default function Login({
 
       <form
         action={signInWithGitHub}
-        className="grid dark:bg-zinc-800/60 bg-zinc-200/60 mx-auto w-full justify-center gap-2 text-foreground p-12 border border-foreground/10 rounded-xl"
+        className="grid bg-primary-foreground mx-auto w-full justify-center gap-2 text-foreground p-12 border border-foreground/5 rounded-xl"
       >
         <h3 className="text-center font-semibold text-3xl pb-2">
           Inciar sesión
         </h3>
         <button
-          className="bg-btn-background rounded-md py-1 px-4 text-foreground mb-2 flex items-center justify-center hover:bg-btn-background-hover transition-all duration-300 outline-1 outline-offset-2 dark:outline-zinc-700 outline-zinc-400 outline border border-foreground/20"
+          className="bg-btn-background rounded-md py-1 px-4 text-foreground mb-2 flex items-center justify-center hover:bg-btn-background-hover transition-all duration-300 outline-1 outline-offset-2 outline-foreground/10 outline border border-foreground/10"
           type="submit"
         >
           <svg viewBox="0 0 24 24" width="24" height="24" className="mr-2">
