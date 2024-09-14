@@ -20,7 +20,7 @@ export default async function AuthButton() {
   return user ? (
     <AuthButtonClient user={user} signOut={signOut} />
   ) : (
-    <Link href="/login" className="py-2 px-3 login-button">
+    <Link href="/login" className="py-2 px-3 login-button hover:brightness-110">
       <div className="fancy"></div>
       <span className="text">Iniciar Sesión</span>
     </Link>

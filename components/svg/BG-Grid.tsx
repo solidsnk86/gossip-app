@@ -1,12 +1,20 @@
-export const BgGrid = (props, style) => {
-  const { ...attrs } = props;
+import { CSSProperties } from "react";
+
+export const BgGrid = ({
+  style,
+  className,
+}: {
+  props?: any | string;
+  style?: CSSProperties;
+  className?: string;
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="513"
       height="272"
       fill="lightgreen"
-      {...attrs}
+      className={className}
     >
       <g clipPath="url(#a)" style={style}>
         <path

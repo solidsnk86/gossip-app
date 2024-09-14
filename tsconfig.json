@@ -28,12 +28,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/auth/callback/route.js",
-    "app/account/account-form.jsx",
-    "app/notes/page.js",
-    "components/svg/BG-Grid.js",
-    "components/svg/BG-Grid.js",
-    "components/svg/BG-Grid.js",
     "app/notifications/page.tsx"
   ],
   "exclude": ["node_modules"]
