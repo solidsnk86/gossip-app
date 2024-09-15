@@ -17,7 +17,7 @@ export const HomePosts: React.FC<HomePostsProps> = ({
   return (
     <article
       key={id}
-      className="flex flex-col space-y-2 bg-zinc-100 dark:bg-zinc-800/50 border border-foreground/10 dark:border-zinc-800 rounded-2xl relative home-posts"
+      className="flex flex-col space-y-2 bg-primary-foreground border border-foreground/5 rounded-2xl relative home-posts"
     >
       <header className="flex gap-[10px] items-center border-b dark:border-zinc-800 p-4">
         <img
