@@ -75,7 +75,7 @@ create table
 -- Tabla agregada para respuestas y notificaciones
 alter table public.gossip add column parent_id uuid references public.gossip(id)
 
--- Creamos la tabla para nostificaciones
+-- Creamos la tabla para nostificaciones relacional con la tabla public.gossip
 create table public.notifications (
   id uuid primary key default gen_random_uuid(),
   user_id uuid references public.profiles(id),
