@@ -91,7 +91,6 @@ export default async function Index() {
               </div>
             ) : null}
             <div className="border border-foreground/5 bg-primary-foreground h-60 rounded-xl mx-auto my-10 flex items-center justify-center p-6 text-center relative overflow-hidden card">
-              <MessageSquareWarning className="inline w-12 h-12 text-amber-600" />
               <p>
                 Esta aplicación está en desarrollo y es una versión (beta), por
                 lo cual puede contener bugs 🐞, también hay funciones que se
