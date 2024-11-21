@@ -6,7 +6,6 @@ import { BgGrid } from "@/components/svg/BG-Grid";
 import { Footer } from "@/components/Footer";
 import SideBarLayout from "@/components/Layout";
 import { HeroLogo } from "@/components/HeroLogo";
-import { MessageSquareWarning } from "lucide-react";
 
 export default async function Index() {
   const canInitSupabaseClient = () => {
@@ -63,7 +62,7 @@ export default async function Index() {
             </h2>
             {user ? (
               data && data.length > 0 ? (
-                data.map((d) => (
+                data.map((d: any) => (
                   <HomePosts
                     key={d.id}
                     id={d.id}

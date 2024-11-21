@@ -1,7 +1,7 @@
 import { User2, Home, Bell, Mail, Share2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { Share } from "./actions/Sahare";
+import { Share } from "./actions/Share";
 
 export default async function SideBarLayout({
   children,

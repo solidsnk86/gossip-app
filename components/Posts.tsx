@@ -5,6 +5,7 @@ import { DeleteButton } from "@/components/actions/DeleteButton";
 import { EditButton } from "./actions/EditButton";
 import { ShareButton } from "./actions/ShareButton";
 import { PostsProps } from "@/app/types/definitions";
+import Image from "next/image";
 
 export const Posts: React.FC<PostsProps> = ({
   id,
@@ -27,7 +28,7 @@ export const Posts: React.FC<PostsProps> = ({
       className="flex flex-col space-y-2 bg-primary-foreground border border-foreground/5  rounded-2xl relative"
     >
       <header className="flex gap-[10px] items-center border-b border-foreground/5 p-4">
-        <img
+        <Image
           src={avatar_url}
           width={38}
           height={38}

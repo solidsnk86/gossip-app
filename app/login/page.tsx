@@ -50,7 +50,7 @@ export default function Login({
 
       <form
         action={signInWithGitHub}
-        className="grid bg-primary-foreground mx-auto w-full justify-center gap-2 text-foreground p-12 border border-foreground/5 rounded-xl"
+        className="grid bg-primary-foreground mx-auto w-full justify-center gap-2 text-foreground p-12 border border-foreground/5 rounded-xl z-50"
       >
         <h3 className="text-center font-semibold text-3xl pb-2">
           Inciar sesión
