@@ -15,11 +15,8 @@ export const HomePosts: React.FC<HomePostsProps> = ({
   url,
 }) => {
   return (
-    <article
-      key={id}
-      className="flex flex-col space-y-2 bg-primary-foreground border border-foreground/5 rounded-2xl relative home-posts"
-    >
-      <header className="flex gap-[10px] items-center border-b dark:border-zinc-800 p-4">
+    <article key={id} className="flex flex-col space-y-2 relative border-b-2">
+      <header className="flex gap-[10px] items-center p-4">
         <img
           src={avatar_url}
           width={38}

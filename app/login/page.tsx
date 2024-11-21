@@ -7,6 +7,10 @@ export default function Login({
 }: {
   searchParams: { message: string };
 }) {
+  const DEFAULT_PATHS =
+    process.env.NODE_ENV === "production"
+      ? "https://gossip-app.vercel.app/auth/callback"
+      : "http://localhost:3000/auth/callback";
   const signInWithGitHub = async () => {
     "use server";
 
@@ -14,7 +18,7 @@ export default function Login({
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: "https://gossip-app.vercel.app/auth/callback",
+        redirectTo: DEFAULT_PATHS,
       },
     });
 

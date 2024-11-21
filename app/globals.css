@@ -110,6 +110,7 @@ body::before {
 
   .fancy {
     position: absolute;
+    animation: rotate calc(2.7s * 2) infinite steps(2, end);
     inset: 0;
     &:before {
       content: "";
@@ -121,7 +122,7 @@ body::before {
       );
       position: absolute;
       inset: 0;
-      animation: rotate 2.7s cubic-bezier(0.55, 0.55, 0.96, 0.95) infinite;
+      animation: rotate 2.7s linear infinite both;
     }
     &:after {
       content: "";
