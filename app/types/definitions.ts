@@ -19,6 +19,7 @@ type FormProps = {
   userName: string;
   fullName?: string;
   avatar?: string;
+  slug?: string;
   onRefresh: () => Promise<any>;
 };
 
@@ -35,6 +36,7 @@ type PostsProps = {
   onEdit?: (id: string | number) => void;
   onSave?: (id: string | number, message: string, edited: boolean) => void;
   edited: boolean;
+  slug?: string;
 };
 
 type HomePostsProps = {

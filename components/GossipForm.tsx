@@ -14,7 +14,7 @@ const formSchema = z.object({
     .min(10, { message: "Mensaje al menos debe tener 10 caracteres" })
     .max(300, { message: "Mensaje máximo 250 caracteres" })
     .trim(),
-  url: z.string().min(0).trim(),
+  title: z.string().min(0).trim(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -28,6 +28,7 @@ export const GossipFormClient: React.FC<FormProps> = ({
   userName,
   fullName,
   avatar,
+  slug,
   onRefresh,
 }) => {
   const {
@@ -46,10 +47,10 @@ export const GossipFormClient: React.FC<FormProps> = ({
         city: city,
         country: country,
         message: formData.message,
-        url: formData.url,
         user_name: userName,
         full_name: fullName,
         avatar_url: avatar,
+        slug: formData.title,
       },
     ]);
 
@@ -126,18 +127,18 @@ export const GossipFormClient: React.FC<FormProps> = ({
 
         <input
           type="text"
-          placeholder="  ¿URL del artículo?"
+          placeholder="  Título de artículo"
           className="w-full p-2 bg-transparent border-b my-4"
-          {...register("url")}
+          {...register("title")}
         />
-        {errors.url && (
-          <small className="error">{errors.url.message as string}</small>
+        {errors.title && (
+          <small className="error">{errors.title.message as string}</small>
         )}
 
         <div className="flex justify-end my-2 mr-4">
           <button
             type="submit"
-            className="px-2 py-1 bg-btn-background hover:bg-btn-background-hover rounded-lg border border-foreground/10 w-fit cursor-pointer disabled:cursor-not-allowed"
+            className="px-3 py-2 bg-btn-background hover:brightness-125 rounded-lg border border-foreground/10 w-fit cursor-pointer disabled:cursor-not-allowed"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Enviando..." : "Enviar"}

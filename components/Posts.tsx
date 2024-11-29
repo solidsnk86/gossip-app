@@ -6,6 +6,7 @@ import { EditButton } from "./actions/EditButton";
 import { ShareButton } from "./actions/ShareButton";
 import { PostsProps } from "@/app/types/definitions";
 import Image from "next/image";
+import generateSlug from "@/lib/generateSlug";
 
 export const Posts: React.FC<PostsProps> = ({
   id,
@@ -20,6 +21,7 @@ export const Posts: React.FC<PostsProps> = ({
   onEdit,
   onSave,
   edited,
+  slug,
 }) => {
   return (
     <section

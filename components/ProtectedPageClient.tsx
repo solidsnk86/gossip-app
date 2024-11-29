@@ -183,6 +183,7 @@ export default function ProtectedPageClient({
                   url: string;
                   created_at: string | number | Date;
                   edited: boolean;
+                  slug: string | undefined;
                 }) => (
                   <Posts
                     key={d.id}
@@ -198,6 +199,7 @@ export default function ProtectedPageClient({
                     onEdit={handleEdit}
                     onSave={handleSave}
                     edited={d.edited === true}
+                    slug={d.slug}
                   />
                 )
               )}
