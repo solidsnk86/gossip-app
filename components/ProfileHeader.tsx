@@ -63,13 +63,13 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             />
             <button
               onClick={handleSave}
-              className="px-[6px] mr-4 bg-btn-background hover:bg-btn-background-hover rounded-md border border-foreground/10 w-fit cursor-pointer mt-2"
+              className="px-[6px] mr-4 bg-btn-background hover:bg-zinc-800/60 rounded-md border border-foreground/10 w-fit cursor-pointer mt-2"
             >
               Guardar
             </button>
             <button
               onClick={() => setIsEditing(false)}
-              className="px-[6px] bg-btn-background hover:bg-btn-background-hover rounded-md border border-foreground/10 w-fit cursor-pointer mt-2"
+              className="px-[6px] bg-btn-background hover:bg-zinc-800/60 rounded-md border border-foreground/10 w-fit cursor-pointer mt-2"
             >
               Cerrar
             </button>
@@ -90,7 +90,8 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
       <aside className="grid text-zinc-400 my-4 px-5">
         <small className="flex items-center">
           <MapPin className="inline w-4 h-4 mr-1 -translate-y-[2px]" />
-          {city}, {country}
+          {city == "" ? "Cargando" : city},{" "}
+          {country == "" ? "Cargando" : country}
         </small>
         <small className="flex items-center">
           <CalendarDays className="inline w-4 h-4 mr-1 -translate-y-[2px]" />
