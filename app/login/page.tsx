@@ -10,7 +10,7 @@ export default function Login({
   const DEFAULT_PATHS =
     process.env.NODE_ENV === "production"
       ? "https://gossip-app.vercel.app/auth/callback"
-      : "http://localhost:3000/auth/callback";
+      : `http://${"localhost:3000" || "localhost:3001"}/auth/callback`;
   const signInWithGitHub = async () => {
     "use server";
 

@@ -86,7 +86,7 @@ export const Posts: React.FC<PostsProps> = ({
                 gossipId?.querySelector("#message")?.textContent;
               onSave && onSave(id, newMessage as string, edited);
             }}
-            className="px-2 py-1 bg-btn-background hover:bg-btn-background-hover rounded-lg border border-foreground/10 w-fit cursor-pointer"
+            className="px-2 py-1 bg-btn-background hover:bg-btn-background-hover rounded-lg border border-foreground/10 w-fit cursor-pointer z-30"
           >
             Guardar
           </button>
